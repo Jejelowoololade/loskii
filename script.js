@@ -27,3 +27,20 @@ document.querySelectorAll(".service-trigger").forEach((trigger)=>{
     }
   });
 });
+
+
+// Reveal the About section gently as it enters the viewport
+const aboutRevealItems=document.querySelectorAll(".about-reveal");
+if("IntersectionObserver" in window){
+  const aboutObserver=new IntersectionObserver((entries,observer)=>{
+    entries.forEach((entry)=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.16});
+  aboutRevealItems.forEach((item)=>aboutObserver.observe(item));
+}else{
+  aboutRevealItems.forEach((item)=>item.classList.add("is-visible"));
+}
