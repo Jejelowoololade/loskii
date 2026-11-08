@@ -114,3 +114,23 @@ body{background:var(--paper)}
 body.dark .service-item{border-color:rgba(255,255,255,.08)}
 body.dark .service-item.is-open{background:#0f0c09;border-color:#0f0c09}
 body.dark .service-tags span{border-color:rgba(255,255,255,.23)}
+
+
+/* Replace decorative Unicode symbols with consistent crisp SVG iconography */
+.brand-mark .spark-icon{width:23px;height:23px;display:block;color:var(--ink)}
+.mini-seal .spark-icon{width:13px;height:13px;color:var(--orange)}
+.proof-stars{display:inline-flex;align-items:center;gap:4px}
+.proof-stars .spark-icon{width:12px;height:12px;color:var(--orange-deep)}
+.ribbon-track .ribbon-spark{display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:0;flex:0 0 auto}
+.ribbon-spark .spark-icon{width:20px;height:20px;color:var(--orange)}
+.kicker-mark{display:inline-flex;align-items:center}
+.kicker-mark .spark-icon{width:19px;height:19px;color:var(--orange-deep)}
+.theme-toggle,.menu-toggle{display:grid;place-items:center}
+.theme-icon,.menu-icon{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:520px){
+ .brand-mark .spark-icon{width:21px;height:21px}
+ .proof-stars .spark-icon{width:10px;height:10px}
+ .ribbon-spark .spark-icon{width:16px;height:16px}
+ .kicker-mark .spark-icon{width:17px;height:17px}
+ .theme-icon,.menu-icon{width:17px;height:17px}
+}
