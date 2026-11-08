@@ -44,3 +44,25 @@ if("IntersectionObserver" in window){
 }else{
   aboutRevealItems.forEach((item)=>item.classList.add("is-visible"));
 }
+
+
+// FAQ accordion: one answer open at a time with smooth close transitions
+ document.querySelectorAll(".faq-trigger").forEach((trigger)=>{
+  trigger.addEventListener("click",()=>{
+    const item=trigger.closest(".faq-item");
+    const panel=document.getElementById(trigger.getAttribute("aria-controls"));
+    const shouldOpen=trigger.getAttribute("aria-expanded")!=="true";
+    document.querySelectorAll(".faq-trigger").forEach((other)=>{
+      const otherPanel=document.getElementById(other.getAttribute("aria-controls"));
+      const otherItem=other.closest(".faq-item");
+      other.setAttribute("aria-expanded","false");
+      if(otherPanel && !otherPanel.hidden){
+        otherItem.classList.remove("is-open");
+        otherPanel.addEventListener("transitionend",(event)=>{
+          if(event.propertyName==="grid-template-rows" && !otherItem.classList.contains("is-open")) otherPanel.hidden=true;
+        },{once:true});
+      }else otherItem.classList.remove("is-open");
+    });
+    if(shouldOpen){trigger.setAttribute("aria-expanded","true");panel.hidden=false;item.classList.add("is-open");}
+  });
+});
