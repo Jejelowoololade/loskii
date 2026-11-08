@@ -9,3 +9,22 @@ body.dark{--paper:#1b1713;--ink:#f6f1e8;--muted:#b8afa2;--white:#29231d;--line:r
 .portrait-placeholder{position:relative;width:100%;height:100%;overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
 .hero-portrait{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 10px 18px rgba(23,16,12,.12))}
 @media(max-width:800px){.hero-portrait{object-fit:contain;object-position:center bottom}}
+
+
+/* Full-bleed layout, enlarged cutout portrait, and seamless marquee */
+html,body{width:100%;min-width:320px}
+body{background:var(--paper)}
+.site-shell{width:100%;max-width:none;margin:0;border-radius:0;box-shadow:none;min-height:100vh}
+.portrait-glow{display:none}
+.hero-stage{height:455px;max-width:1100px}
+.portrait-frame{width:min(520px,58vw);height:435px}
+.portrait-placeholder{overflow:visible}
+.hero-portrait{width:125%;height:112%;max-width:none;object-fit:contain;object-position:center bottom;transform:translateY(2%) scale(1.06);transform-origin:center bottom;filter:none}
+.service-ribbon{width:100vw;margin-left:calc(50% - 50vw);padding:18px 0}
+.ribbon-track{display:flex;width:max-content;min-width:0;justify-content:flex-start;gap:0;animation:loskii-marquee 24s linear infinite;will-change:transform}
+.ribbon-group{display:flex;align-items:center;flex:none;gap:42px;padding-right:42px}
+.service-ribbon:hover .ribbon-track{animation-play-state:paused}
+@keyframes loskii-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.ribbon-track{animation:none}}
+@media(max-width:800px){.site-shell{width:100%;margin:0;border-radius:0}.hero-stage{height:390px}.portrait-frame{width:min(430px,76vw);height:370px}.hero-portrait{width:125%;height:112%}.ribbon-group{gap:25px;padding-right:25px}}
+@media(max-width:520px){.hero-stage{height:365px}.portrait-frame{width:88vw;height:350px}.hero-portrait{width:135%;height:112%;transform:translateY(2%) scale(1.04)}.ribbon-group{gap:20px;padding-right:20px}}
